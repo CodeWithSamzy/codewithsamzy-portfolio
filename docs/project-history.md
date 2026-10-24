@@ -42,3 +42,7 @@ The rental platform remains an anonymous technical case study. Its card and stat
 The responsive pass removes the 320px page minimum, lets text and actions wrap, uses relative type sizes, adds safe-area spacing, makes the mobile menu scroll inside short viewports, enlarges touch targets, and gives stack tabs their own full-width row. Navigation closes when focus or a pointer leaves the header and when the layout switches to desktop navigation.
 
 Validation now includes 37 Chromium browser checks: 22 viewport sizes from 256 to 2560 pixels, touch navigation and case studies at six phone/tablet sizes (including a 256px-high landscape viewport), 200% text at four widths, content clipping, tap targets, and all original functional checks. The supplied CV is unchanged. Local preview remains port 5174.
+
+## GitHub and Vercel deployment — 24 October 2026
+
+The portfolio source is published at `https://github.com/CodeWithSamzy/codewithsamzy-portfolio`. The `main` branch is connected to Vercel for automatic production deployments. The canonical production URL is `https://codewithsamzy-portfolio.vercel.app`.

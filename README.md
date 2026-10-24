@@ -37,6 +37,8 @@ Responsive layouts use wrapping content, relative font sizes, safe-area gutters,
 
 ## Publishing
 
-`npm run build` writes `dist`. `netlify.toml` and `public/_headers` supply the build settings, SPA fallback, security headers, and CV cache policy. The canonical URL and social metadata currently target `https://code-with-samzy.netlify.app`; change them if the new portfolio uses a different domain. This new app has not been linked to or published over the existing Netlify site.
+`npm run build` writes `dist`. `vercel.json` configures the Vite production build, security headers, and cache policy on Vercel. The production site is [codewithsamzy-portfolio.vercel.app](https://codewithsamzy-portfolio.vercel.app), connected to the `CodeWithSamzy/codewithsamzy-portfolio` GitHub repository for automatic deployments from `main`.
+
+`netlify.toml` and `public/_headers` remain available for an optional Netlify deployment.
 
 The social preview is a real 1200 × 630 PNG. Fonts are served locally under the SIL Open Font License; see `public/fonts/OFL.txt`.
