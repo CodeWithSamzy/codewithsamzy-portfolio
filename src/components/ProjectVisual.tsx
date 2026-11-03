@@ -1,5 +1,81 @@
 import type { ProjectId } from '../data'
 
+function PatchwiseVisual() {
+  return (
+    <div
+      className="patchwise-art"
+      aria-label="Illustration of Patchwise scanning TypeScript and verifying a security fix"
+      role="img"
+    >
+      <div className="patchwise-brand">
+        <span className="patchwise-mark" aria-hidden="true">
+          <i />
+        </span>
+        <strong>patchwise</strong>
+        <span>UNDERSTAND THE FLAW. SHIP THE FIX.</span>
+      </div>
+      <div className="patchwise-workbench">
+        <div className="patchwise-code">
+          <div className="patchwise-toolbar">
+            <span aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <b>playground.ts</b>
+            <em>TypeScript</em>
+          </div>
+          <div className="patchwise-lines" aria-hidden="true">
+            <span>
+              <i>1</i>
+              <code>
+                <b>const</b> email = req.query.email;
+              </code>
+            </span>
+            <span>
+              <i>2</i>
+              <code>
+                <b>await</b> db.query(
+              </code>
+            </span>
+            <span className="patchwise-risk-line">
+              <i>3</i>
+              <code>{'  `SELECT * FROM users WHERE email = ${email}`'}</code>
+            </span>
+            <span>
+              <i>4</i>
+              <code>);</code>
+            </span>
+          </div>
+          <div className="patchwise-scan-button">SCAN CODE <span>↗</span></div>
+        </div>
+        <div className="patchwise-result">
+          <div className="patchwise-result-top">
+            <span>SCAN COMPLETE</span>
+            <b>01 issue found</b>
+          </div>
+          <div className="patchwise-finding">
+            <span>CRITICAL</span>
+            <strong>SQL query built from untrusted input</strong>
+            <small>LINE 3 · CWE-89 · INJECTION</small>
+          </div>
+          <div className="patchwise-verified">
+            <span aria-hidden="true">✓</span>
+            <div>
+              <strong>Fix verified</strong>
+              <small>RE-SCAN PASSED</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="patchwise-art-footer">
+        <span>DETERMINISTIC RULES</span>
+        <span>CODE NEVER EXECUTED</span>
+      </div>
+    </div>
+  )
+}
+
 function VantraVisual() {
   return (
     <div className="vantra-art" aria-label="Illustration of Vantra’s project workspace" role="img">
@@ -226,6 +302,7 @@ function PulsemapVisual() {
 }
 
 export default function ProjectVisual({ id }: { id: ProjectId }) {
+  if (id === 'patchwise') return <PatchwiseVisual />
   if (id === 'vantra') return <VantraVisual />
   if (id === 'wrapped') return <WrappedVisual />
   if (id === 'rental') return <RentalVisual />

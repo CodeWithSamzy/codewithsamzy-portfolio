@@ -20,7 +20,7 @@ test('page, local assets, and strict production policy work without console erro
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Good software.Every layer.')
   await page.evaluate(() => document.fonts.ready)
   expect(await page.evaluate(() => document.fonts.check('16px Geist'))).toBe(true)
-  await expect(page.getByRole('button', { name: 'Read Vantra case study' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Read Patchwise case study' })).toBeVisible()
   const response = await request.get('/')
   expect(response.headers()['content-security-policy']).toContain("script-src 'self'")
   expect(errors).toEqual([])
@@ -59,12 +59,20 @@ test('architecture tabs support pointer and keyboard selection', async ({ page }
 
 test('case study URLs, native focus containment, Escape, and history navigation', async ({ page }) => {
   await page.goto('/')
-  const trigger = page.getByRole('button', { name: 'Read Vantra case study' })
+  const trigger = page.getByRole('button', { name: 'Read Patchwise case study' })
   await trigger.click()
-  await expect(page).toHaveURL(/#project\/vantra$/)
+  await expect(page).toHaveURL(/#project\/patchwise$/)
   const dialog = page.getByRole('dialog')
   await expect(dialog).toBeVisible()
-  await expect(dialog.getByRole('heading', { name: 'Vantra', exact: true })).toBeVisible()
+  await expect(dialog.getByRole('heading', { name: 'Patchwise', exact: true })).toBeVisible()
+  await expect(dialog.getByRole('link', { name: /Visit project/ })).toHaveAttribute(
+    'href',
+    'https://patchwise-eight.vercel.app',
+  )
+  await expect(dialog.getByRole('link', { name: /View source/ })).toHaveAttribute(
+    'href',
+    'https://github.com/CodeWithSamzy/patchwise',
+  )
   await expect(dialog.getByRole('button', { name: 'Close case study' })).toBeFocused()
   await page.keyboard.press('Shift+Tab')
   expect(await page.evaluate(() => Boolean(document.activeElement?.closest('dialog')))).toBe(true)
@@ -102,7 +110,7 @@ test('mobile navigation, full project archive, and case studies are usable by to
   await page.getByRole('navigation').getByRole('link', { name: 'Work' }).tap()
   await expect(page.getByRole('navigation')).not.toBeVisible()
   await expect(page).toHaveURL(/#work$/)
-  await page.getByRole('button', { name: 'See all 11 projects' }).tap()
+  await page.getByRole('button', { name: 'See all 12 projects' }).tap()
   const finedge = page.getByRole('button', { name: /FinEdge backend/ })
   await expect(finedge).toBeVisible()
   await finedge.tap()

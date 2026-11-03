@@ -1,4 +1,5 @@
 export type ProjectId =
+  | 'patchwise'
   | 'vantra'
   | 'wrapped'
   | 'rental'
@@ -40,6 +41,40 @@ export const profile = {
 }
 
 export const projects: Project[] = [
+  {
+    id: 'patchwise',
+    name: 'Patchwise',
+    category: 'SECURITY EDUCATION',
+    headline: 'Find the flaw.\nUnderstand the fix.',
+    description:
+      'An interactive JavaScript and TypeScript security scanner that explains deterministic findings and verifies rule-specific fixes.',
+    stack: ['Next.js', 'TypeScript', 'Zod', 'Vitest'],
+    role: 'Full-stack development, security analysis & product design',
+    status: 'Live open-source project',
+    live: 'https://patchwise-eight.vercel.app',
+    source: 'https://github.com/CodeWithSamzy/patchwise',
+    problem:
+      'Security scanners often stop at an alarming label. I built Patchwise to connect a vulnerable pattern to the trust boundary that failed, show how it can be abused, and offer a fix only when the same rule no longer detects the issue.',
+    decisions: [
+      {
+        title: 'Keep analysis deterministic and inspectable.',
+        detail:
+          'Nine focused rules cover injection, cross-site scripting, path traversal, secrets, weak hashing, JWT verification, redirects, and CORS. Every result includes its source line, severity, CWE, OWASP mapping, and plain-language guidance.',
+      },
+      {
+        title: 'Verify a patch before calling it fixed.',
+        detail:
+          'Rule-specific transformations are run through the detector again. Patchwise exposes a proposed fix only when the triggering rule no longer matches, then lets the user apply it and scan the updated source.',
+      },
+      {
+        title: 'Treat submitted code as short-lived text.',
+        detail:
+          'The API validates language and size, rate-limits scans, and analyzes source without executing it or sending it to a model. Results use a bounded in-memory store with a 30-minute lifetime and no required database.',
+      },
+    ],
+    flow: ['JavaScript or TypeScript', 'Deterministic rule engine', 'Explained finding + verified fix'],
+    note: 'Patchwise is a focused learning tool, not a replacement for a full security review. The repository includes rule fixtures, API integration tests, CI, CodeQL, lessons, and contribution guidance.',
+  },
   {
     id: 'vantra',
     name: 'Vantra',

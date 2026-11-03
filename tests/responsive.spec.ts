@@ -68,7 +68,7 @@ for (const [width, height] of viewports) {
       await page.screenshot({ path: testInfo.outputPath(`hero-${width}.png`) })
     }
 
-    await page.getByRole('button', { name: 'See all 11 projects' }).click()
+    await page.getByRole('button', { name: 'See all 12 projects' }).click()
     await expectContentToFit(page)
     for (const [id, name] of [
       ['rental', 'Rental platform'],
